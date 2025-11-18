@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIDCUCORP S.A.S. - Soluciones Integrales en Desarrollo, Consultoría y Talento Humano</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+         :root {
+            --primary-color: #1a5276;
+            --secondary-color: #2874a6;
+            --accent-color: #3498db;
+            --light-color: #eaf2f8;
+            --dark-color: #212f3d;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef;
+            --dark-gray: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f5f7fa;
+            background-image: url('img/membrete.png');
+            background-repeat: no-repeat;
+            background-position: top center;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        /* Overlay para mejorar la legibilidad del contenido */
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.85);
+            z-index: -1;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+        /* Stilos del Header  */
+        
+        header {
+            background-color: rgba(26, 82, 118, 0.95);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-item i {
+            margin-right: 5px;
+            color: var(--accent-color);
+        }
+        /* Navegacion */
+        
+        nav {
+            background-color: rgba(40, 116, 166, 0.95);
+            padding: 10px 0;
+            backdrop-filter: blur(5px);
+            position: sticky;
+            top: 84px;
+            z-index: 999;
+        }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            list-style: none;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-link:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .nav-link i {
+            margin-right: 5px;
+        }
+        
+        main {
+            padding: 40px 0;
+        }
+        
+        section {
+            margin-bottom: 50px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(5px);
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        /* Section de los Servicios */
+        
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .service-card {
+            background-color: rgba(248, 249, 250, 0.95);
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--accent-color);
+            backdrop-filter: blur(5px);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-title {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .service-title i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .service-list {
+            list-style: none;
+        }
+        
+        .service-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .service-list li:before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .values-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .value-card {
+            background-color: rgba(248, 249, 250, 0.95);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+        
+        .value-title {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        .advantages-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .advantage-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .advantage-icon {
+            color: var(--success-color);
+            margin-right: 10px;
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+        
+        footer {
+            background-color: rgba(33, 47, 61, 0.95);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-link:hover {
+            color: var(--accent-color);
+        }
+        /* Diseño Responsive */
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .contact-info {
+                justify-content: center;
+            }
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            .services-container,
+            .values-container,
+            .advantages-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .tab-container {
+            margin-top: 20px;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+        
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .tab-button.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--accent-color);
+        }
+        
+        .tab-button:hover {
+            color: var(--primary-color);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background-image: url('membrete.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            opacity: 0.05;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="overlay"></div>
+    <div class="watermark"></div>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-users-cog"></i> SIDCUCORP S.A.S.
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i> Cra. 66 No. 19-72, Bogotá D.C.
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i> siducorpgerencia-2@gmail.com
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i> 316 830 5229
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#history" class="nav-link"><i class="fas fa-history"></i> Nuestra Historia</a></li>
+                <li class="nav-item"><a href="#mission" class="nav-link"><i class="fas fa-bullseye"></i> Misión</a></li>
+                <li class="nav-item"><a href="#vision" class="nav-link"><i class="fas fa-eye"></i> Visión</a></li>
+                <li class="nav-item"><a href="#values" class="nav-link"><i class="fas fa-gem"></i> Valores</a></li>
+                <li class="nav-item"><a href="#services" class="nav-link"><i class="fas fa-briefcase"></i> Servicios</a></li>
+                <li class="nav-item"><a href="#advantages" class="nav-link"><i class="fas fa-trophy"></i> Ventajas</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="history" class="fade-in">
+            <h2 class="section-title"><i class="fas fa-history"></i> Nuestra Historia</h2>
+            <p>SIDCUCORP S.A.S. nació hace cinco años como una iniciativa visionaria orientada a ofrecer soluciones integrales en desarrollo organizacional, consultoría y gestión del talento humano. Surgimos con el propósito de responder a las crecientes
+                necesidades del sector público y privado en materia de selección, evaluación, capacitación y administración del recurso humano, apostándole a procesos más técnicos, transparentes y eficientes.</p>
+            <br>
+            <p>Desde nuestros inicios, hemos consolidado un equipo interdisciplinario de profesionales con amplia experiencia en psicología organizacional, administración pública, derecho laboral, gestión humana y operación logística para procesos de selección.
+                Esta combinación de conocimiento técnico y enfoque práctico nos ha permitido posicionarnos como aliados estratégicos de distintas organizaciones en todo el país.</p>
+            <br>
+            <p>A lo largo de estos cinco años, SIDCUCORP ha evolucionado de un proyecto emergente a una empresa sólida, con portafolio propio, procedimientos estandarizados y presencia en procesos de alto impacto, especialmente en el ámbito de concursos
+                de mérito, evaluación por competencias, diseño de pruebas y outsourcing de talento humano.</p>
+            <br>
+            <p>Hoy, seguimos creciendo de la mano de nuestros clientes, manteniendo nuestro compromiso con la calidad, la innovación y la prestación de un servicio ético, responsable y orientado a resultados.</p>
+        </section>
+
+        <section id="mission" class="fade-in">
+            <h2 class="section-title"><i class="fas fa-bullseye"></i> Misión</h2>
+            <p>SIDCUCORP S.A.S. tiene como misión ofrecer soluciones integrales en gestión del talento humano, consultoría organizacional y operación de procesos de selección, brindando servicios técnicos, transparentes y oportunos al sector público y privado.
+                Trabajamos con enfoque por competencias, altos estándares de calidad y responsabilidad ética, aportando a la consolidación de equipos de trabajo idóneos que contribuyan al cumplimiento de los objetivos organizacionales de nuestros clientes.</p>
+        </section>
+
+        <section id="vision" class="fade-in">
+            <h2 class="section-title"><i class="fas fa-eye"></i> Visión</h2>
+            <p>En el año 2030, SIDCUCORP S.A.S. será reconocida a nivel nacional como una empresa líder en consultoría y gestión del talento humano, especialmente en el diseño, implementación y operación de procesos de selección por mérito y soluciones organizacionales
+                innovadoras. Nos proyectamos como un aliado estratégico de entidades públicas y privadas que buscan rigurosidad técnica, transparencia, confidencialidad y resultados verificables en sus procesos de gestión humana.</p>
+        </section>
+
+        <section id="values" class="fade-in">
+            <h2 class="section-title"><i class="fas fa-gem"></i> Valores Estratégicos</h2>
+            <div class="values-container">
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-balance-scale"></i></div>
+                    <h3 class="value-title">Ética y transparencia</h3>
+                    <p>Actuamos con rectitud, respeto por la normatividad vigente y trazabilidad en cada etapa de los procesos.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-award"></i></div>
+                    <h3 class="value-title">Calidad técnica</h3>
+                    <p>Sustentamos nuestros servicios en metodologías validadas, equipos idóneos y mejores prácticas en gestión del talento humano.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-star"></i></div>
+                    <h3 class="value-title">Compromiso con el mérito</h3>
+                    <p>Promovemos procesos de selección basados en la igualdad de oportunidades, la objetividad y la evaluación por competencias.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-lock"></i></div>
+                    <h3 class="value-title">Confidencialidad y protección de datos</h3>
+                    <p>Resguardamos la información de nuestros clientes, aspirantes y aliados, garantizando su uso responsable.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-handshake"></i></div>
+                    <h3 class="value-title">Orientación al cliente</h3>
+                    <p>Diseñamos soluciones a la medida, escuchando las necesidades reales de cada organización y priorizando su satisfacción.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3 class="value-title">Innovación y mejora continua</h3>
+                    <p>Revisamos, evaluamos y ajustamos permanentemente nuestros procesos para ofrecer servicios más eficientes y eficaces.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-users"></i></div>
+                    <h3 class="value-title">Trabajo en equipo</h3>
+                    <p>Fomentamos la colaboración, el respeto y la comunicación asertiva tanto al interior de la empresa como con nuestros clientes y aliados.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="fade-in">
+            <h2 class="section-title"><i class="fas fa-briefcase"></i> Paquete Integral de Servicios de Talento Humano</h2>
+
+            <div class="tab-container">
+                <div class="tab-buttons">
+                    <button class="tab-button active" data-tab="recruitment">Reclutamiento y Selección</button>
+                    <button class="tab-button" data-tab="evaluation">Evaluación y Valoración</button>
+                    <button class="tab-button" data-tab="training">Capacitación y Desarrollo</button>
+                    <button class="tab-button" data-tab="payroll">Gestión de Nómina</button>
+                    <button class="tab-button" data-tab="outsourcing">Outsourcing</button>
+                    <button class="tab-button" data-tab="consulting">Consultoría</button>
+                    <button class="tab-button" data-tab="climate">Clima y Cultura</button>
+                    <button class="tab-button" data-tab="public">Procesos Públicos</button>
+                </div>
+
+                <div class="tab-content active" id="recruitment">
+                    <div class="service-card">
+                        <h3 class="service-title"><i class="fas fa-user-plus"></i> Reclutamiento y Selección de Personal</h3>
+                        <ul class="service-list">
+                            <li>Diseño del perfil del cargo y análisis ocupacional.</li>
+                            <li>Publicación y difusión de convocatorias en plataformas especializadas.</li>
+                            <li>Reclutamiento masivo o especializado según necesidades del cliente.</li>
+                            <li>Aplicación de pruebas psicotécnicas, situacionales, proyectivas y por competencias.</li>
+                            <li>Entrevistas estructuradas y por competencias (BEI).</li>
+                            <li>Verificación de referencias laborales y antecedentes.</li>
+                            <li>Presentación de informes técnico-psicológicos de los candidatos finalistas.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="evaluation">
+                    <div class="service-card">
+                        <h3 class="service-title"><i class="fas fa-chart-line"></i> Evaluación y Valoración de Competencias</h3>
+                        <ul class="service-list">
+                            <li>Pruebas psicométricas avaladas y validadas.</li>
+                            <li>Pruebas de juicio situacional (PJS).</li>
+                            <li>Assessment center y ejercicios prácticos según rol.</li>
+                            <li>Valoración de habilidades socioemocionales, liderazgo y trabajo en equipo.</li>
+                            <li>Evaluación de desempeño 90°, 180° y 360°.</li>
+                            <li>Informe detallado de competencias por candidato o por equipo.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="training">
+                    <div class="service-card">
+                        <h3 class="service-title"><i class="fas fa-graduation-cap"></i> Capacitación, Formación y Desarrollo</h3>
+                        <ul class="service-list">
+                            <li>Diseño de planes de capacitación ajustados al diagnóstico organizacional.</li>
+                            <li>Programas de liderazgo, comunicación asertiva y gestión de conflictos.</li>
+                            <li>Capacitaciones en servicio al cliente, ventas, enfoque diferencial y PAE.</li>
+                            <li>Talleres vivenciales y metodologías experienciales.</li>
+                            <li>Formación en seguridad y salud en el trabajo (según normatividad vigente).</li>
+                            <li>Evaluación de impacto de la capacitación en el desempeño laboral.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="payroll">
+                    <div class="service-card">
+                        <h3 class="service-title"><i class="fas fa-calculator"></i> Gestión de Nómina y Administración del Recurso Humano</h3>
+                        <ul class="service-list">
+                            <li>Liquidación de nómina y seguridad social.</li>
+                            <li>Manejo de novedades, incapacidades y ausentismos.</li>
+                            <li>Administración de contratos laborales y gestión documental.</li>
+                            <li>Acompañamiento en procesos disciplinarios y gestión del clima laboral.</li>
+                            <li>Matriz de riesgos laborales y protocolos de procedimientos.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="outsourcing">
+                    <div class="service-card">
+                        <h3 class="service-title"><i class="fas fa-handshake"></i> Outsourcing de Talento Humano</h3>
+                        <ul class="service-list">
+                            <li>Administración total o parcial de los procesos de RR. HH.</li>
+                            <li>Suministro de personal temporal, operativo, administrativo o profesional.</li>
+                            <li>Acompañamiento del personal contratado y control de indicadores de desempeño.</li>
+                            <li>Atención de requerimientos 24/7 según necesidades del cliente.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="consulting">
+                    <div class="service-card">
+                        <h3 class="service-title"><i class="fas fa-briefcase"></i> Consultoría Organizacional</h3>
+                        <ul class="service-list">
+                            <li>Estudios de cargas laborales y rediseño organizacional.</li>
+                            <li>Ajuste y diseño de Manuales Específicos de Funciones y Competencias (MEFCL).</li>
+                            <li>Diagnóstico organizacional y mejora de procesos.</li>
+                            <li>Implementación del enfoque por competencias en la entidad.</li>
+                            <li>Construcción de políticas internas de gestión humana.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="climate">
+                    <div class="service-card">
+                        <h3 class="service-title"><i class="fas fa-cloud-sun"></i> Evaluación de Clima y Cultura Organizacional</h3>
+                        <ul class="service-list">
+                            <li>Aplicación de encuestas de clima laboral.</li>
+                            <li>Análisis cualitativo mediante entrevistas y grupos focales.</li>
+                            <li>Informe ejecutivo con hallazgos, riesgos y plan de acción recomendado.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="public">
+                    <div class="service-card">
+                        <h3 class="service-title"><i class="fas fa-landmark"></i> Servicio de Acompañamiento en Procesos de Selección Pública</h3>
+                        <p>Ideal para entidades públicas y universidades:</p>
+                        <ul class="service-list">
+                            <li>Diseño, validación y aplicación de pruebas escritas y psicotécnicas.</li>
+                            <li>Operación logística para aplicación de pruebas.</li>
+                            <li>Custodia de material sensible, manejo de centros de acopio y mesas de servicio.</li>
+                            <li>Personal operativo capacitado: coordinadores, supervisores, delegados y jurados.</li>
+                            <li>Elaboración de informes técnicos, reportes y anexos del proceso.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="advantages" class="fade-in">
+            <h2 class="section-title"><i class="fas fa-trophy"></i> Ventajas Competitivas de SIDCUCORP</h2>
+            <div class="advantages-container">
+                <div class="advantage-item">
+                    <div class="advantage-icon"><i class="fas fa-check-circle"></i></div>
+                    <div>Equipo interdisciplinario con experiencia en sector público y privado.</div>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-icon"><i class="fas fa-check-circle"></i></div>
+                    <div>Procesos basados en normas del DAFP, Código Sustantivo del Trabajo y buenas prácticas de gestión humana.</div>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-icon"><i class="fas fa-check-circle"></i></div>
+                    <div>Plataforma tecnológica para seguimiento y trazabilidad.</div>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-icon"><i class="fas fa-check-circle"></i></div>
+                    <div>Compromiso con la confidencialidad y protección de datos (Ley 1581 de 2012).</div>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-icon"><i class="fas fa-check-circle"></i></div>
+                    <div>Disponibilidad nacional y tiempos de respuesta ágiles.</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2023 SIDCUCORP S.A.S. - Todos los derechos reservados</p>
+                <p>Soluciones Integrales en Desarrollo, Consultoría y Talento Humano</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Funcionalidad de pestañas (tabs)
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Quitar la clase "active" de todos los botones y contenidos
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+
+                    // Agregar la clase "active" al botón clicado y al contenido correspondiente
+                    button.classList.add('active');
+                    const tabId = button.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+
+            // Desplazamiento suave para los enlaces de navegación
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Agregar animación al hacer scroll
+            const sections = document.querySelectorAll('section');
+
+            const animateOnScroll = () => {
+                sections.forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+
+                    if (sectionTop < windowHeight - 20) {
+                        section.classList.add('fade-in');
+                    }
+                });
+            };
+
+            // Ejecutar una vez al cargar la página
+            animateOnScroll();
+
+            // Ejecutar al hacer scroll
+            window.addEventListener('scroll', animateOnScroll);
+        });
+    </script>
+</body>
+
+</html>
